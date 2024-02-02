@@ -2,6 +2,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -10,5 +11,55 @@
 .navbar {
   display: flex;
   justify-content: space-around;
-  padding: 4rem;
+  padding: 2.8rem;
+  font-family: 'Rubik', Fallback, sans-serif;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('/src/assets/fonts/Rubik-Regular.ttf') format('ttf'),
+    url('/src/assets/fonts/OpenSans_SemiCondensed-Regular.ttf') format('ttf');
+  font-display: swap;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    background-color: black;
+  }
+
+  50% {
+    background-color: transparent;
+  }
+}
+
+.blinking-square {
+  width: 15px;
+  height: 28px;
+  /* animation: blink 1s linear infinite; */
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.navbar span p {
+  text-decoration: underline;
+}
+
+.bg {
+  height: 80vh;
+  background-image: url('/src/assets/images/home-header-modern.svg');
+  background-position-x: center;
+  background-position-y: 35%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  background-origin: padding-box;
+  background-clip: border-box;
+}
+
+.dive-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
