@@ -12,13 +12,13 @@
   display: flex;
   justify-content: space-around;
   padding: 2.8rem;
-  font-family: 'Rubik', Fallback, sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 @font-face {
   font-family: 'Rubik';
-  src: url('/src/assets/fonts/Rubik-Regular.ttf') format('ttf'),
-    url('/src/assets/fonts/OpenSans_SemiCondensed-Regular.ttf') format('ttf');
+  src: url('/src/assets/fonts/Rubik-Regular.ttf') format('truetype'),
+    url('/src/assets/fonts/OpenSans_SemiCondensed-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -48,18 +48,37 @@
 
 .bg {
   height: 80vh;
-  background-image: url('/src/assets/images/home-header-modern.svg');
+  /* using avif format compressed images to increase lcp and fcp */
+  background-image: url('/src/assets/images/home-header-modern.avif');
   background-position-x: center;
   background-position-y: 35%;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
   background-origin: padding-box;
-  background-clip: border-box;
-}
-
-.dive-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 1rem;
+  background-color: rgb(39, 39, 39);
+  color: white;
+  border-radius: 0.7rem;
+  width: 10rem;
+  overflow: hidden;
+  transition:  0.5s ease;
+}
+
+.btn:hover {
+  width: 11.5rem;
+}
+
+.tagline {
+  margin-top: -4rem;
+  margin-bottom: 6rem;
+  font-family: 'Rubik', sans-serif;
 }

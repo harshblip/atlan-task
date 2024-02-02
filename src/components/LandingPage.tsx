@@ -1,12 +1,14 @@
 import React from 'react';
-import background from '../assets/images/home-header-modern.svg';
 
 const LandingPage: React.FC = () => {
     return (
-        <div className=''>
-            <button className='dive-btn'>
-                Dive in 
+        <div className='bg'>
+            <div className='flex flex-col items-center'>
+            <p className='font-bold text-6xl tagline'> Discover. Explore. Create. </p>
+            <button className='btn text-lg font-semibold'>
+                Dive in
             </button>
+            </div>
         </div>
     )
 }

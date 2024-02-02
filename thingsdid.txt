@@ -1,0 +1,2 @@
+1. avif format
+2. preloaded fonts
