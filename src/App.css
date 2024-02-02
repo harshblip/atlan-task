@@ -70,7 +70,7 @@
   border-radius: 0.7rem;
   width: 10rem;
   overflow: hidden;
-  transition:  0.5s ease;
+  transition: 0.5s ease;
 }
 
 .btn:hover {
@@ -81,4 +81,21 @@
   margin-top: -4rem;
   margin-bottom: 6rem;
   font-family: 'Rubik', sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  /* Adjust as needed */
+  max-width: 800px;
+  /* Adjust as needed */
+  margin: 0 auto;
+  /* Center the container */
+  border: 1px solid black;
+}
+
+.column {
+  padding: 20px;
+  /* Adjust as needed */
 }
