@@ -1,17 +1,23 @@
-1. avif format
-2. preloaded fonts
-3. global state management, decreasing the times to re-render
+import React from "react";
+import { DataContext } from '../@myTypes/data';
 
-<div className="card">
-                            <div className="flex justify-around">
-                                <div className="w-[4rem] border flex flex-col">
+const Card: React.FC = () => {
+    const { data, dispatch } = React.useContext(DataContext)!;
+    return (
+        <>
+            {
+                data.map((x, i) => {
+                    return (
+                        <div className="card">
+                            <div className="flex">
+                                <div className="border w-[6rem] p-4 text-center">
                                     <img src={x.logo}
                                         alt={x.maker}
                                         width={50}
                                     />
                                     <p className="text-sm"> {x.modelName} </p>
                                 </div>
-                                <div className="flex flex-col text-start">
+                                <div className="border w-full text-start p-4">
                                     <p className="text-lg text-gray-700 font-semibold"> {x.name} </p>
                                     <p className="text-xs text-gray-300 font-bold"> {x.maker} </p>
                                     <div className="flex gap-2">
@@ -26,3 +32,11 @@
                                 </div>
                             </div>
                         </div>
+                    )
+                })
+            }
+        </>
+    )
+}
+
+export default Card;

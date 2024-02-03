@@ -4,10 +4,11 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Discover from './components/Discover';
 import ModelInfo from './components/ModelInfo';
+import DataProvider from './context/dataContext'
 
 function App() {
   return (
-    <div>
+    <DataProvider>
       {/* <Navbar />
       <LandingPage /> */}
       <Routes>
@@ -15,7 +16,7 @@ function App() {
         <Route path="/discover" element={<Discover />} />
         <Route path="/discover/:modelName" element={<ModelInfo />} />
       </Routes>
-    </div>
+    </DataProvider>
   );
 }
 

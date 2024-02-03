@@ -1,44 +1,40 @@
-import React, { useState, useEffect } from "react";
-
-interface Model {
-    id: number;
-    logo: string;
-    modelName: string;
-    name: string;
-    maker: string;
-    accuracy: string;
-    lastUpdated: string;
-    availability: string;
-    description: string;
-    performanceMetrics: string;
-    sampleCode: string;
-    useCases: string;
-    likes: number;
-}
+import React, { useState } from "react";
+import Card from "./Card";
 
 const Discover: React.FC = () => {
-    const [models, setModels] = useState<Model[]>([]);
-    useEffect(() => {
-        fetch('https://my-json-server.typicode.com/harshblip/mock/models')
-          .then(response => response.json())
-          .then(data => setModels(data))
-          .catch(error => console.error(error));
-     }, []); // passing an empty array so that its called only once
-
-     console.log(models[0].logo);
+    const [activeButton, setActiveButton] = useState(() => {
+        const saved = localStorage.getItem('activeButton');
+        return saved ? JSON.parse(saved) : 'featured'; // Default to 'featured' if nothing is saved
+    });
 
     return (
-        <div className="container">
-            <div className="column">Featured</div>
-            <div className="column">
-                <p> AI / LLM Models </p>
-                <div>
-                <img src={models[0].logo} />
-                    {/* <img src = {models[0].logo} alt = "logo" /> */}
+        <>
+            <div className="container">
+                <div className="flex justify-around">
+                    <button
+                        className={`custom-button ${activeButton === 'featured' ? 'active' : ''}`}
+                        onClick={() => {
+                            setActiveButton('featured');
+                            localStorage.setItem('activeButton', JSON.stringify('featured'));
+                        }}
+                    >
+                        Featured 🔥
+                    </button>
+                    <button
+                        className={`custom-button ${activeButton === 'ai' ? 'active' : ''}`}
+                        onClick={() => {
+                            setActiveButton('ai');
+                            localStorage.setItem('activeButton', JSON.stringify('ai'));
+                        }}
+                    >
+                        AI / LLM Models ⚙
+                    </button>
+                </div>
+                <div className="cards">
+                    <Card />
                 </div>
             </div>
-        </div>
-
+        </>
     )
 }
 
