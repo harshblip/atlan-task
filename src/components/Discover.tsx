@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, Suspense, lazy } from "react";
 import Card from "./Card";
 import SortButton from './Sort';
 import FilterButton from "./Filter";
 
+const LeoComponent = lazy(() => import('./Card'));
 
 const Discover: React.FC = () => {
     const [activeButton, setActiveButton] = useState(() => {
@@ -38,7 +39,9 @@ const Discover: React.FC = () => {
                     <FilterButton />
                 </div>
                 <div className="cards">
-                    <Card />
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <LeoComponent />
+                    </Suspense>
                 </div>
             </div>
         </>

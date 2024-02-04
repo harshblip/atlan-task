@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { DataContext, IData } from '../@myTypes/data';
+import React, { useEffect, useState, Suspense } from "react";
+import { DataContext } from '../@myTypes/data';
 import { StateContext } from "../@myTypes/state";
 import { filterData, sortData } from "../assets/helper/util";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Card: React.FC = () => {
     const { data, dispatch } = React.useContext(DataContext)!;
@@ -21,9 +21,8 @@ const Card: React.FC = () => {
         setFilteredData(tempData);
     }, [data, sort, filter]);
 
-
     return (
-        <>
+        <Suspense>
             {
                 filteredData.map((x, i) => {
                     return (
@@ -58,7 +57,7 @@ const Card: React.FC = () => {
                     )
                 })
             }
-        </>
+        </Suspense>
     )
 }
 

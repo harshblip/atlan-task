@@ -1,13 +1,3 @@
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .navbar {
   display: flex;
   justify-content: space-around;
@@ -20,18 +10,6 @@
   src: url('/src/assets/fonts/Rubik-Regular.ttf') format('truetype'),
     url('/src/assets/fonts/OpenSans_SemiCondensed-Regular.ttf') format('truetype');
   font-display: swap;
-}
-
-@keyframes blink {
-
-  0%,
-  100% {
-    background-color: black;
-  }
-
-  50% {
-    background-color: transparent;
-  }
 }
 
 .blinking-square {
@@ -112,18 +90,6 @@
   transform: scale(1.05);
 }
 
-.custom-image {
-  mix-blend-mode: screen;
-}
-
-.red {
-  color: rgb(238, 63, 63);
-}
-
-.yellow {
-  color: yellow;
-}
-
 .green {
   color: rgb(50, 210, 50);
 }
@@ -149,12 +115,6 @@
 .card:hover {
   cursor: pointer;
   transform: scale(1.05);
-}
-
-.btn-group {
-  flex: 1;
-  justify-content: space-around;
-  font-size: smaller;
 }
 
 .btn2 {
@@ -204,4 +164,3 @@
 .dropdown-content .item:hover {
   background: #fcfcfc;
 }
-
