@@ -138,11 +138,17 @@
 .card {
   flex: 0 1 calc(60% - 1em);
   margin-bottom: 20px;
-  border: 1px solid #ccc;
   padding: 16px;
   text-align: center;
-  margin-left: 5rem;
+  margin-left: 4rem;
+  padding-right: 5rem;
   margin-top: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .btn-group {
@@ -157,13 +163,15 @@
   border-radius: 0.4rem;
   padding: 6px 20px 6px 20px;
   margin-top: 1rem;
+  width: 7rem;
 }
 
 .btn3 {
   color: black;
   border-radius: 0.4rem;
-  padding: 6px 20px 6px 20px;
   margin-top: 1rem;
+  margin-left: 1rem;
+  width: 8rem;
 }
 
 .dropdown {
@@ -196,3 +204,4 @@
 .dropdown-content .item:hover {
   background: #fcfcfc;
 }
+

@@ -1,19 +1,20 @@
 // utils.js
-
-export function filterData(data, filterOption) {
-    if (filterOption === 'organization') {
-        return data.filter(item => item.type === 'organization');
-    } else if (filterOption === 'people') {
-        return data.filter(item => item.type === 'people');
+export function filterData(tempData, filterOption) {
+    if (filterOption === 'Organization') {
+        return tempData.filter(item => item.type === 'Organization');
     }
-    return data;
+    if (filterOption === 'Person') {
+        return tempData.filter(item => item.type === 'Person');
+    }
+    return tempData;
 }
 
-export function sortData(data, sortOption) {
-    if (sortOption === 'likes') {
-        return [...data].sort((a, b) => b.likes - a.likes);
-    } else if (sortOption === 'accuracy') {
-        return [...data].sort((a, b) => b.accuracy - a.accuracy);
+export function sortData(tempData, sortOption) {
+    if (sortOption === 'Likes') {
+        return tempData.sort((a, b) => b.likes - a.likes);
     }
-    return data;
+    if (sortOption === 'Accuracy') {
+        return tempData.sort((a, b) => b.accuracy - a.accuracy);
+    }
+    return tempData;
 }

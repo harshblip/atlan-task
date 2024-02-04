@@ -33,7 +33,7 @@ const Discover: React.FC = () => {
                         AI / LLM Models ⚙
                     </button>
                 </div>
-                <div className="flex mt-2 ml-20 space-x-8">
+                <div className="flex mt-2 justify-center space-x-8">
                     <SortButton />
                     <FilterButton />
                 </div>

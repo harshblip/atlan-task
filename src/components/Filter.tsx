@@ -20,7 +20,7 @@ const Filter: React.FC = () => {
             >
                 <div
                     onClick={(e) => {
-                        setFilter("Organization🏨");
+                        setFilter("Organization");
                         setIsActive(!isActive);
                     }}
                     className="item"
@@ -30,7 +30,7 @@ const Filter: React.FC = () => {
                 <div
                     className="item"
                     onClick={(e) => {
-                        setFilter("Person🧔");
+                        setFilter("Person");
                         setIsActive(!isActive);
                     }}
                 >
