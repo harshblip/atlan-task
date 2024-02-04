@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Card from "./Card";
+import SortButton from './Sort';
+import FilterButton from "./Filter";
+
 
 const Discover: React.FC = () => {
     const [activeButton, setActiveButton] = useState(() => {
@@ -29,6 +32,10 @@ const Discover: React.FC = () => {
                     >
                         AI / LLM Models ⚙
                     </button>
+                </div>
+                <div className="flex mt-2 ml-20 space-x-8">
+                    <SortButton />
+                    <FilterButton />
                 </div>
                 <div className="cards">
                     <Card />

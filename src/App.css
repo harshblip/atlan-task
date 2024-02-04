@@ -165,3 +165,34 @@
   padding: 6px 20px 6px 20px;
   margin-top: 1rem;
 }
+
+.dropdown {
+  width: 160px;
+  position: relative;
+}
+
+.dropdown .dropdown-btn {
+  cursor: pointer;
+  background: white;
+  padding: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #777;
+}
+
+.dropdown-content {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.07);
+}
+
+.dropdown-content .item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-content .item:hover {
+  background: #fcfcfc;
+}

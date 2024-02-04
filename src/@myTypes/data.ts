@@ -7,6 +7,7 @@ export interface IData {
     modelName: string;
     name: string;
     maker: string;
+    type: string;
     accuracy: string;
     lastUpdated: string;
     availability: string;

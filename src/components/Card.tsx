@@ -1,14 +1,29 @@
-import React from "react";
-import { DataContext } from '../@myTypes/data';
+import React, { useEffect, useState } from "react";
+import { DataContext, IData } from '../@myTypes/data';
+import { StateContext } from "../@myTypes/state";
+import { filterData, sortData } from "../assets/helper/util";
 
 const Card: React.FC = () => {
     const { data, dispatch } = React.useContext(DataContext)!;
+    const [filteredData, setFilteredData] = useState<IData[]>([]);;
+    const { sort, setSort } = React.useContext(StateContext)!;
+    const { filter, setFilter } = React.useContext(StateContext)!;
+    console.log(sort, filter);
+    useEffect(() => {
+        let tempData = [...data];
+
+        tempData = filterData(tempData, filter);
+        tempData = sortData(tempData, sort);
+
+        setFilteredData(tempData);
+    }, [data, sort, filter]);
+
     return (
         <>
             {
-                data.map((x, i) => {
+                filteredData.map((x, i) => {
                     return (
-                        <div className="card">
+                        <div className="card" key={i}>
                             <div className="flex">
                                 <div className="border w-[6rem] p-4 text-center">
                                     <img src={x.logo}
@@ -23,7 +38,7 @@ const Card: React.FC = () => {
                                     <div className="flex gap-2">
                                         <p className="text-sm text-gray-700"> {x.lastUpdated} </p>
                                         <svg height="18" width="10">
-                                            <circle cx="5" cy="10" r="3" stroke-width="3" fill="gray" />
+                                            <circle cx="5" cy="10" r="3" strokeWidth="3" fill="gray" />
                                         </svg>
                                         <p className={`text-sm font-bold ${+x.accuracy <= 30 ? 'red' : +x.accuracy <= 60 ? 'yellow' : 'green'}`}>
                                             {x.accuracy}
