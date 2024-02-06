@@ -1,56 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { DataContext } from '../@myTypes/data';
 import { useParams } from "react-router-dom";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { codeSnippets } from "../assets/helper/codeSnippets";
+import ProgressiveImg from "./ProgressiveImg";
 
 const ModelInfo: React.FC = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const { data } = React.useContext(DataContext)!;
     const { modelName } = useParams();
+
     console.log(modelName);
+    
+    const preloadImages = (srcArray: string[]): void => {
+        const promises = srcArray.map((src) => {
+            return new Promise<void>((resolve, reject) => {
+                const img = new Image();
+                img.src = src;
+                img.onload = () => resolve();
+                img.onerror = () => reject();
+            });
+        });
+        
+        Promise.all(promises).then(() => setIsLoading(false)).catch((error) => {
+            console.error('Error preloading images:', error);
+            setIsLoading(false);
+        });
+    };
+    
+    const imageUrls = data.flatMap(item => [item.logo, item.blurLogo]);
+    
+    React.useEffect(() => {
+        preloadImages(imageUrls);
+    }, [imageUrls]);
+    
     const modelData = data.find(model => model.modelName === modelName);
     if (!modelData) {
         return <div>Model not found.</div>;
     }
-    const pythonCode = `
-        import requests
-        import json
 
-        # Replace these variables with actual values
-        api_endpoint = 'https://api.example.com/text-analyzer'
-        api_key = 'your_api_key'
-        text_to_analyze = 'This is a sample text for analysis.'
-
-        # Request headers with API key
-        headers = {
-            'Content-Type': 'application/json',
-            'Authorization': f'Bearer {api_key}'
-        }
-
-        # Request payload
-        payload = {
-            'text': text_to_analyze
-        }
-
-        try:
-            # Make a POST request to the text analyzer API
-            response = requests.post(api_endpoint, headers=headers, json=payload)
-
-            # Check if the request was successful (status code 200)
-            if response.status_code == 200:
-                # Parse and print the analysis results
-                analysis_results = response.json()
-                print('Analysis Results:')
-                print(json.dumps(analysis_results, indent=2))
-            else:
-                # Print an error message if the request was not successful
-                print(f'Error: {response.status_code} - {response.text}')
-
-        except Exception as e:
-            # Handle exceptions such as network errors
-            print(f'An error occurred: {str(e)}')
-    `;
     const containerStyle = {
         width: '400px',
         height: '400px',
@@ -60,10 +49,14 @@ const ModelInfo: React.FC = () => {
         scrollbarWidth: 'none' as 'none',
         msOverflowStyle: 'none' as 'none',
     };
+
     return (
         <div className="about-container no-scrollbar overflow-auto shadow ">
             <div>
-                <img src={modelData.logo} alt={modelData.modelName} />
+                <ProgressiveImg
+                    src={modelData.logo}
+                    placeholderSrc={modelData.blurLogo}
+                />
                 <div className="flex flex-col p-7">
                     <p className="text-3xl font text-black/90"> {modelData.modelName} </p>
                     <div className="flex space-x-2 mt-2">

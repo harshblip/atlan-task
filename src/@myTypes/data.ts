@@ -4,6 +4,7 @@ import React from "react";
 export interface IData {
     id: number;
     logo: string;
+    blurLogo: string;
     modelName: string;
     name: string;
     maker: string;
