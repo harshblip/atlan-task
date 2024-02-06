@@ -1,5 +1,4 @@
 import React, { useState, Suspense, lazy } from "react";
-import Card from "./Card";
 import SortButton from './Sort';
 import FilterButton from "./Filter";
 

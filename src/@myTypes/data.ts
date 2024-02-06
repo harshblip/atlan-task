@@ -10,11 +10,11 @@ export interface IData {
     type: string;
     accuracy: string;
     lastUpdated: string;
-    availability: string;
     description: string;
-    performanceMetrics: string;
     sampleCode: string;
-    useCases: string;
+    UseCases: string;
+    usedBy: string,
+    tags: string;
     likes: number;
 }
 

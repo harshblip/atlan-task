@@ -5,10 +5,10 @@ import { filterData, sortData } from "../assets/helper/util";
 import { useNavigate } from "react-router-dom";
 
 const Card: React.FC = () => {
-    const { data, dispatch } = React.useContext(DataContext)!;
+    const { data } = React.useContext(DataContext)!;
     const [filteredData, setFilteredData] = useState([...data]);
-    const { sort, setSort } = React.useContext(StateContext)!;
-    const { filter, setFilter } = React.useContext(StateContext)!;
+    const { sort } = React.useContext(StateContext)!;
+    const { filter } = React.useContext(StateContext)!;
     const navigate = useNavigate();
     console.log(sort, filter);
 
@@ -49,7 +49,7 @@ const Card: React.FC = () => {
                                     </div>
                                     <div className="flex">
                                         <button className="btn2"> Try it out </button>
-                                        <button className="btn3 shadow" onClick={() => navigate('/discover/:modelName')}> Know more  </button>
+                                        <button className="btn3 shadow" onClick={() => navigate(`/discover/${encodeURIComponent(x.modelName)}`)}> Know more  </button>
                                     </div>
                                 </div>
                             </div>

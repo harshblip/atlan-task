@@ -15,9 +15,22 @@
 .blinking-square {
   width: 15px;
   height: 28px;
-  /* animation: blink 1s linear infinite; */
+  animation: blink 1s linear infinite;
   margin-left: 5px;
   margin-top: 5px;
+  background-color: black;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 .navbar span p {
@@ -163,4 +176,24 @@
 
 .dropdown-content .item:hover {
   background: #fcfcfc;
+}
+
+.about-container {
+  height: calc(100vh - 4rem);
+  width: 35%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+
+.about-container img {
+  margin-left: 8rem;
+  margin-top: -26rem;
+  opacity: 0.1;
+}
+
+.syntaxhighlighter::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -10,17 +10,19 @@ import CacheProvider from './context/cacheContext';
 
 function App() {
   return (
-    <CacheProvider>
-      <StateProvider>
-        <DataProvider>
-          <Routes>
-            <Route path='/' element={<Navbar />} />
-            <Route path="/discover" element={<Discover />} />
-            <Route path="/discover/:modelName" element={<ModelInfo />} />
-          </Routes>
-        </DataProvider>
-      </StateProvider>
-    </CacheProvider>
+    <Suspense>
+      <CacheProvider>
+        <StateProvider>
+          <DataProvider>
+            <Routes>
+              <Route path='/' element={<Navbar />} />
+              <Route path="/discover" element={<Discover />} />
+              <Route path="/discover/:modelName" element={<ModelInfo />} />
+            </Routes>
+          </DataProvider>
+        </StateProvider>
+      </CacheProvider>
+    </Suspense>
   );
 }
 

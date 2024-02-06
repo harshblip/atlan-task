@@ -9,3 +9,17 @@
         flex: 0 1 calc(25% - 1em);
     }
 }
+
+@media (min-width: 600px) {
+    .container {
+        width: 60%;
+        /* Smaller width on tablets */
+    }
+}
+
+@media (min-width: 900px) {
+    .container {
+        width: 40%;
+        /* Even smaller width on desktops */
+    }
+}
