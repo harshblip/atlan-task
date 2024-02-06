@@ -1,41 +1,41 @@
 export const codeSnippets = [
     `
-        import requests
-        import json
-
-        # Replace these variables with actual values
-        api_endpoint = 'https://api.example.com/text-analyzer'
-        api_key = 'your_api_key'
-        text_to_analyze = 'This is a sample text for analysis.'
-
-        # Request headers with API key
-        headers = {
-            'Content-Type': 'application/json',
-            'Authorization': f'Bearer {api_key}'
-        }
-
-        # Request payload
-        payload = {
-            'text': text_to_analyze
-        }
-
-        try:
-            # Make a POST request to the text analyzer API
-            response = requests.post(api_endpoint, headers=headers, json=payload)
-
-            # Check if the request was successful (status code 200)
-            if response.status_code == 200:
-                # Parse and print the analysis results
-                analysis_results = response.json()
-                print('Analysis Results:')
-                print(json.dumps(analysis_results, indent=2))
-            else:
-                # Print an error message if the request was not successful
-                print(f'Error: {response.status_code} - {response.text}')
-
-        except Exception as e:
-            # Handle exceptions such as network errors
-            print(f'An error occurred: {str(e)}')
+    import requests
+    import json
+    
+    # Replace these variables with actual values
+    api_endpoint = 'https://api.example.com/text-analyzer'
+    api_key = 'your_api_key'
+    text_to_analyze = 'This is a sample text for analysis.'
+    
+    # Request headers with API key
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {api_key}'
+    }
+    
+    # Request payload
+    payload = {
+        'text': text_to_analyze
+    }
+    
+    try:
+        # Make a POST request to the text analyzer API
+        response = requests.post(api_endpoint, headers=headers, json=payload)
+    
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            # Parse and print the analysis results
+            analysis_results = response.json()
+            print('Analysis Results:')
+            print(json.dumps(analysis_results, indent=2))
+        else:
+            # Print an error message if the request was not successful
+            print(f'Error: {response.status_code} - {response.text}')
+    
+    except Exception as e:
+        # Handle exceptions such as network errors
+        print(f'An error occurred: {str(e)}')
     `,
     `from imageai.Detection import ObjectDetection
     import os
@@ -94,6 +94,5 @@ export const codeSnippets = [
     # Print the top  5 predictions along with their probabilities
     for eachPrediction, eachProbability in zip(predictions, probabilities):
         print(eachPrediction, ":", eachProbability)
-    `,
-    
+    `
 ];
