@@ -11,17 +11,17 @@ import CacheProvider from './context/cacheContext';
 function App() {
   return (
     <Suspense>
-      <CacheProvider>
-        <StateProvider>
-          <DataProvider>
-            <Routes>
-              <Route path='/' element={<Navbar />} />
-              <Route path="/discover" element={<Discover />} />
-              <Route path="/discover/:modelName" element={<ModelInfo />} />
-            </Routes>
-          </DataProvider>
-        </StateProvider>
-      </CacheProvider>
+        <CacheProvider>
+          <StateProvider>
+            <DataProvider>
+              <Routes>
+                <Route path='/' element={<Navbar />} />
+                <Route path="/discover" element={<Discover />} />
+                <Route path="/discover/:modelName" element={<ModelInfo />} />
+              </Routes>
+            </DataProvider>
+          </StateProvider>
+        </CacheProvider>
     </Suspense>
   );
 }

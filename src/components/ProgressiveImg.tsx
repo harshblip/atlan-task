@@ -14,8 +14,7 @@ const ProgressiveImg: React.FC<ProgressiveImgProps> = ({ placeholderSrc, src, ..
         img.onload = () => {
             setImgSrc(src);
         };
-        console.log('ha horha hai');
-    }, [src]);
+    }, []);
     return (
         <img
             {...{ src: imgSrc, ...props }}
