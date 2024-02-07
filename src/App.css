@@ -2,15 +2,15 @@
   display: flex;
   justify-content: space-around;
   padding: 2.8rem;
-  font-family: 'Rubik', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Rubik';
-  src: url('/src/assets/fonts/Rubik-Regular.ttf') format('truetype'),
-    url('/src/assets/fonts/OpenSans_SemiCondensed-Regular.ttf') format('truetype');
+  src: url('/src/assets/fonts/Rubik-Regular.woff2') format('woff2'),
+    url('/src/assets/fonts/OpenSans_SemiCondensed-Regular.woff2') format('woff2');
   font-display: swap;
-}
+} */
 
 .blinking-square {
   width: 15px;
@@ -41,15 +41,8 @@
   height: 80vh;
   /* using avif format compressed images to increase lcp and fcp */
   background-image: url('/src/assets/images/home-header-modern.avif');
-  background-position-x: center;
-  background-position-y: 35%;
   background-repeat: no-repeat;
-  background-attachment: scroll;
   background-size: cover;
-  background-origin: padding-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .btn {
@@ -71,7 +64,7 @@
 .tagline {
   margin-top: -4rem;
   margin-bottom: 6rem;
-  font-family: 'Rubik', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
 }
 
 .container {
@@ -180,7 +173,7 @@
 
 .about-container {
   height: calc(100vh - 4rem);
-  width: 35%;
+  width: 30rem;
   max-width: 1200px;
   margin: 2rem auto;
   box-sizing: border-box;
@@ -192,7 +185,7 @@
 }
 
 .about-container img {
-  margin-left: 8rem;
+  margin-left: 6rem;
   margin-top: 1rem;
   opacity: 0.1;
 }
