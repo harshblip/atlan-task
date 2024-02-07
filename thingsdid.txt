@@ -3,25 +3,3 @@
 3. global state management, decreasing the times to re-render (decreasing )
 4. caching data to decrease time to load same data
 5. preloaded fonts beforehand
-
-const preloadImages = (srcArray: string[]): void => {
-        const promises = srcArray.map((src) => {
-            return new Promise<void>((resolve, reject) => {
-                const img = new Image();
-                img.src = src;
-                img.onload = () => resolve();
-                img.onerror = () => reject();
-            });
-        });
-
-        Promise.all(promises).then(() => setIsLoading(false)).catch((error) => {
-            console.error('Error preloading images:', error);
-            setIsLoading(false);
-        });
-    };
-
-    const imageUrls = data.flatMap(item => [item.logo, item.blurLogo]);
-
-    React.useEffect(() => {
-        preloadImages(imageUrls);
-    }, [imageUrls]);
