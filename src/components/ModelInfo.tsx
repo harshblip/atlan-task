@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { codeSnippets } from "../assets/helper/codeSnippets";
+import styled from "styled-components"
 import ProgressiveImg from "./ProgressiveImg";
 
 const ModelInfo: React.FC = () => {
@@ -50,6 +51,13 @@ const ModelInfo: React.FC = () => {
         msOverflowStyle: 'none' as 'none',
     };
 
+    const Text = styled.text`
+        font-size: medium;
+        color: #415a77;
+        font-weight: bold;
+        margin-top: -0.072rem;
+    `
+
     return (
         <div className="about-container no-scrollbar overflow-auto shadow ">
             <div>
@@ -61,19 +69,23 @@ const ModelInfo: React.FC = () => {
                     <p className="text-3xl font text-black/90"> {modelData.modelName} </p>
                     <div className="flex space-x-2 mt-2">
                         <p className="font-bold text-sm"> maker: </p>
-                        <p className="text-md text-[#415a77] font-bold tracking-widest -mt-[0.052rem]"> {modelData.maker} </p>
+                        <Text className="tracking-widest">
+                            {modelData.maker}
+                        </Text>
                     </div>
                     <div className="flex space-x-2 mt-2">
                         <p className="font-bold text-sm"> name: </p>
-                        <p className="text-md text-[#415a77] font-bold tracking-widest -mt-[0.052rem]"> {modelData.name} </p>
+                        <Text> {modelData.name} </Text>
                     </div>
                     <div className="flex space-x-2 mt-2">
                         <p className="font-bold text-sm"> last updated: </p>
-                        <p className="text-md text-[#415a77] font-bold tracking-widest -mt-[0.052rem]"> {modelData.lastUpdated} </p>
+                        <Text className="tracking-widest">
+                            {modelData.lastUpdated}
+                        </Text>
                     </div>
                     <div className="flex space-x-2 mt-2">
                         <p className="font-bold text-sm"> tags: </p>
-                        <p className="text-md text-[#415a77] font-bold -mt-[0.052rem]"> {modelData.tags} </p>
+                        <Text> {modelData.tags} </Text>
                     </div>
                     <hr
                         className="w-[18rem] mt-2 border"

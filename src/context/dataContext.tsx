@@ -54,8 +54,8 @@ const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
 
     if (loading) {
-        return <div className='flex justify-center items-center align-middle'>
-            Loading...
+        return <div className='flex justify-center mt-44'>
+            Hit refresh/shift+R to see an easter egg 😋
         </div>; // Display loading indicator while data is being fetched
     }
 

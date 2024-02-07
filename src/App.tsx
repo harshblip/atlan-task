@@ -12,19 +12,19 @@ const ModelInfo = lazy(() => import('./components/ModelInfo'));
 function App() {
   return (
     <Suspense
-      fallback= {<div> Maybe hit shift+R / refresh ? </div> }
+      fallback={<div className='justify-center mt-44'> Hit refresh/shift+R to see an easter egg 😋  </div>}
     >
-        <CacheProvider>
-          <StateProvider>
-            <DataProvider>
-              <Routes>
-                <Route path='/' element={<Navbar/>} />
-                <Route path="/discover" element={<Discover />} />
-                <Route path="/discover/:modelName" element={<ModelInfo />} />
-              </Routes>
-            </DataProvider>
-          </StateProvider>
-        </CacheProvider>
+      <CacheProvider>
+        <StateProvider>
+          <DataProvider>
+            <Routes>
+              <Route path='/' element={<Navbar />} />
+              <Route path="/discover" element={<Discover />} />
+              <Route path="/discover/:modelName" element={<ModelInfo />} />
+            </Routes>
+          </DataProvider>
+        </StateProvider>
+      </CacheProvider>
     </Suspense>
   );
 }

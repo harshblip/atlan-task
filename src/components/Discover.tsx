@@ -38,7 +38,7 @@ const Discover: React.FC = () => {
                     <FilterButton />
                 </div>
                 <div className="cards">
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense fallback={<div className='justify-center mt-44'>Hit refresh/shift+R to see an easter egg 😋</div>}>
                         <LeoComponent />
                     </Suspense>
                 </div>
