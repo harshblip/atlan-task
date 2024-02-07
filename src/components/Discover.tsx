@@ -7,7 +7,7 @@ const LeoComponent = lazy(() => import('./Card'));
 const Discover: React.FC = () => {
     const [activeButton, setActiveButton] = useState(() => {
         const saved = localStorage.getItem('activeButton');
-        return saved ? JSON.parse(saved) : 'featured'; // Default to 'featured' if nothing is saved
+        return saved ? JSON.parse(saved) : 'ai'; // Default to 'featured' if nothing is saved
     });
 
     return (

@@ -12,7 +12,7 @@ const ModelInfo: React.FC = () => {
     const { modelName } = useParams();
 
     console.log(modelName);
-    
+
     const preloadImages = (srcArray: string[]): void => {
         const promises = srcArray.map((src) => {
             return new Promise<void>((resolve, reject) => {
@@ -22,19 +22,19 @@ const ModelInfo: React.FC = () => {
                 img.onerror = () => reject();
             });
         });
-        
+
         Promise.all(promises).then(() => setIsLoading(false)).catch((error) => {
             console.error('Error preloading images:', error);
             setIsLoading(false);
         });
     };
-    
+
     const imageUrls = data.flatMap(item => [item.logo, item.blurLogo]);
-    
+
     React.useEffect(() => {
         preloadImages(imageUrls);
     }, [imageUrls]);
-    
+
     const modelData = data.find(model => model.modelName === modelName);
     if (!modelData) {
         return <div>Model not found.</div>;
@@ -53,27 +53,27 @@ const ModelInfo: React.FC = () => {
     return (
         <div className="about-container no-scrollbar overflow-auto shadow ">
             <div>
-                <ProgressiveImg
+                {/* <ProgressiveImg
                     src={modelData.logo}
                     placeholderSrc={modelData.blurLogo}
-                />
+                /> */}
                 <div className="flex flex-col p-7">
                     <p className="text-3xl font text-black/90"> {modelData.modelName} </p>
                     <div className="flex space-x-2 mt-2">
                         <p className="font-bold text-sm"> maker: </p>
-                        <p className="text-md text-gray-400 font-bold tracking-widest -mt-[0.052rem]"> {modelData.maker} </p>
+                        <p className="text-md text-[#415a77] font-bold tracking-widest -mt-[0.052rem]"> {modelData.maker} </p>
                     </div>
                     <div className="flex space-x-2 mt-2">
                         <p className="font-bold text-sm"> name: </p>
-                        <p className="text-md text-gray-400 font-bold tracking-widest -mt-[0.052rem]"> {modelData.name} </p>
+                        <p className="text-md text-[#415a77] font-bold tracking-widest -mt-[0.052rem]"> {modelData.name} </p>
                     </div>
                     <div className="flex space-x-2 mt-2">
                         <p className="font-bold text-sm"> last updated: </p>
-                        <p className="text-md text-gray-400 font-bold tracking-widest -mt-[0.052rem]"> {modelData.lastUpdated} </p>
+                        <p className="text-md text-[#415a77] font-bold tracking-widest -mt-[0.052rem]"> {modelData.lastUpdated} </p>
                     </div>
                     <div className="flex space-x-2 mt-2">
                         <p className="font-bold text-sm"> tags: </p>
-                        <p className="text-md text-gray-400 font-bold -mt-[0.052rem]"> {modelData.tags} </p>
+                        <p className="text-md text-[#415a77] font-bold -mt-[0.052rem]"> {modelData.tags} </p>
                     </div>
                     <hr
                         className="w-[18rem] mt-2 border"
@@ -95,13 +95,13 @@ const ModelInfo: React.FC = () => {
                     />
                     <div className="flex flex-col space-x-2 mt-[3rem]">
                         <p className="font-bold text-lg underline mb-2"> Description </p>
-                        <p className="text-md text-gray-400 font-bold">
+                        <p className="text-md text-[#415a77] font-bold">
                             {modelData.description}
                         </p>
                     </div>
                     <div className="flex flex-col space-x-2 mt-[2rem] ">
                         <p className="font-bold text-lg underline mb-2"> Use Cases: </p>
-                        <p className="text-md text-gray-400 font-bold">
+                        <p className="text-md text-[#415a77] font-bold">
                             {modelData.description}
                         </p>
                     </div>
