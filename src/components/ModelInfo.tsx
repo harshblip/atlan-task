@@ -15,26 +15,27 @@ const ModelInfo: React.FC = () => {
     console.log(modelName);
 
     const [modelData, setModelData] = useState(() => {
-        // Try to get model data from localStorage
         const storedData = localStorage.getItem('modelData');
         if (storedData) {
             return JSON.parse(storedData);
-        } else {
-            // Fallback to data from DataContext if not in localStorage
-            return data.find(model => model.modelName === modelName);
         }
+        // Fallback to data from DataContext if not in localStorage
+        return data.find(model => model.modelName === modelName);
     });
 
+    // Update localStorage whenever modelData changes
     React.useEffect(() => {
         if (modelData) {
             localStorage.setItem('modelData', JSON.stringify(modelData));
         }
-        // Return a cleanup function that clears localStorage when the component unmounts
+    }, [modelData]);
+
+    // Clear localStorage when the component unmounts
+    React.useEffect(() => {
         return () => {
             localStorage.removeItem('modelData');
         };
-    
-    }, [modelData]);
+    }, []); // Empty dependency array ensures this runs only on mount and unmount
 
 
     const containerStyle = {
@@ -55,69 +56,53 @@ const ModelInfo: React.FC = () => {
     `
 
     return (
-        <div className="about-container no-scrollbar overflow-auto shadow ">
-            <div>
-                <div className="flex flex-col p-7">
-                    <p className="text-3xl font text-black/90"> {modelData.modelName} </p>
-                    <div className="flex space-x-2 mt-2">
-                        <p className="font-bold text-sm"> maker: </p>
-                        <Text className="tracking-widest">
-                            {modelData.maker}
-                        </Text>
-                    </div>
-                    <div className="flex space-x-2 mt-2">
-                        <p className="font-bold text-sm"> name: </p>
-                        <Text> {modelData.name} </Text>
-                    </div>
-                    <div className="flex space-x-2 mt-2">
-                        <p className="font-bold text-sm"> last updated: </p>
-                        <Text className="tracking-widest">
-                            {modelData.lastUpdated}
-                        </Text>
-                    </div>
-                    <div className="flex space-x-2 mt-2">
-                        <p className="font-bold text-sm"> tags: </p>
-                        <Text> {modelData.tags} </Text>
-                    </div>
-                    <hr
-                        className="w-[18rem] mt-2 border"
-                    />
-                    <div className="flex justify-around ml-4">
-                        <div className="flex space-x-2 mt-4">
-                            <button className="flex p-3 border-2 border-pink-300 rounded-md hover:bg-pink-300 hover:border-white hover:rounded-md hover:text-white transition-all w-[7rem]"><span className="ml-2 material-symbols-outlined mr-2 hover:text-white">
-                                favorite
-                            </span> <p> {modelData.likes} </p> </button>
-                        </div>
-                        <div className="flex space-x-2 mt-4 ml-4">
-                            <button className="flex p-3 border-2 border-gray-300 rounded-md hover:bg-gray-300 hover:border-white hover:rounded-md hover:text-white transition-all w-[7rem]"><span className="ml-4 material-symbols-outlined mr-2 hover:text-white">
-                                diversity_2
-                            </span> <p> {modelData.usedBy} </p> </button>
-                        </div>
-                    </div>
-                    <hr
-                        className="w-[18rem] border mt-8 ml-20"
-                    />
-                    <div className="flex flex-col space-x-2 mt-[3rem]">
-                        <p className="font-bold text-lg underline mb-2"> Description </p>
-                        <p className="text-md text-[#415a77] font-bold">
-                            {modelData.description}
-                        </p>
-                    </div>
-                    <div className="flex flex-col space-x-2 mt-[2rem] ">
-                        <p className="font-bold text-lg underline mb-2"> Use Cases: </p>
-                        <p className="text-md text-[#415a77] font-bold">
-                            {modelData.description}
-                        </p>
-                    </div>
-                    <p className="font-bold text-lg underline mb-2 mt-[2rem]"> Sample Code: </p>
-                    <SyntaxHighlighter
-                        language="python"
-                        style={vscDarkPlus}
-                        customStyle={containerStyle}
-                    >
-                        {codeSnippets[modelData.id - 1]}
-                    </SyntaxHighlighter>
-                </div>
+        <div className="p-4 absolute">
+            <p className="text-2xl"> {modelData.modelName} </p>
+            <div className="flex mt-4">
+                <p className="font-bold text-md mr-2"> maker: </p>
+                <p className="text-lg -mt-[0.08rem]"> {modelData.maker} </p>
+            </div>
+            <div className="flex mt-4">
+                <p className="font-bold text-md mr-2"> name: </p>
+                <p className="text-lg -mt-[0.08rem]"> {modelData.name} </p>
+            </div>
+            <div className="flex mt-4">
+                <p className="font-bold text-md mr-2"> last updated: </p>
+                <p className="text-lg -mt-[0.08rem]"> {modelData.lastUpdated} </p>
+            </div>
+            <div className="flex mt-4">
+                <p className="font-bold text-md mr-2"> tags: </p>
+                <p className="text-lg -mt-[0.08rem]"> {modelData.tags} </p>
+            </div>
+            <hr
+                className="mt-4 border-2 text-black"
+            />
+            <div className="flex mt-6 space-x-12">
+                <button className="flex border-2 border-pink-300 rounded-md hover:bg-pink-300 hover:border-white hover:rounded-md hover:text-white transition-all p-4">
+                    <span className="material-symbols-outlined mr-1"> favorite </span>
+                    :
+                    <p className="ml-2"> {modelData.likes} </p>
+                </button>
+                <button className="flex border-2 border-gray-300 rounded-md hover:bg-gray-300 hover:border-white hover:rounded-md hover:text-white transition-all p-4">
+                    <span className="material-symbols-outlined mr-1"> diversity_2 </span>
+                    :
+                    <p className="ml-2"> {modelData.usedBy} </p>
+                </button>
+            </div>
+            <hr
+                className="mt-6 border-2"
+            />
+            <div className="mt-4">
+                <p className="font-bold text-md mr-2 text-lg"> Description </p>
+                <p className="text-lg -mt-[0.08rem]"> {modelData.description} </p>
+            </div>
+            <div className="mt-4">
+                <p className="font-bold text-md mr-2 text-lg"> Use Cases </p>
+                <p className="text-lg -mt-[0.08rem]"> {modelData.useCases} </p>
+            </div>
+            <div className="mt-4">
+                <p className="font-bold text-lg mr-2 mb-4"> Sample Code </p>
+                <pre className="text-lg -mt-[0.08rem] text-white bg-black/90"> {codeSnippets[modelData.id - 1]} </pre>
             </div>
         </div>
     )

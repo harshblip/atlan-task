@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { IData, DataContext } from '../@myTypes/data';
 import { useCache } from './cacheContext';
+import pako from 'pako';
 import axios from 'axios';
 
 const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -14,9 +15,10 @@ const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     React.useEffect(() => {
         if (!dataFetched) {
             const cachedData = getCache('myApiData');
-
+            
             if (cachedData) {
-                cachedData.forEach((item: IData) => {
+                const decompressedData = JSON.parse(pako.inflate(cachedData, {to: 'string'}));
+                decompressedData.forEach((item:IData) => {
                     dispatch(item);
                 });
 
@@ -31,13 +33,15 @@ const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
                             timeout: 600 // Request timeout in milliseconds
                         });
 
+                        const compressedData = pako.deflate(JSON.stringify(response.data));
+
                         response.data.forEach((item: IData) => {
                             dispatch(item);
                         });
 
                         setDataFetched(true);
                         setLoading(false);
-                        setCache('myApiData', response.data);
+                        setCache('myApiData', compressedData);
                     } catch (error) {
                         console.error('Failed to fetch data: ', error);
                     }

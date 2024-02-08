@@ -5,12 +5,12 @@
   /* font-family: 'Rubik', sans-serif; */
 }
 
-/* @font-face {
+@font-face {
   font-family: 'Rubik';
   src: url('/src/assets/fonts/Rubik-Regular.woff2') format('woff2'),
     url('/src/assets/fonts/OpenSans_SemiCondensed-Regular.woff2') format('woff2');
   font-display: swap;
-} */
+}
 
 .blinking-square {
   width: 35px;
