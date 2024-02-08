@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import '../responsive.css'
 
 
 const LandingPage: React.FC = () => {
@@ -14,7 +15,6 @@ const LandingPage: React.FC = () => {
         font-weight: 700;
         font-size: 3.75rem/* 60px */;
         line-height: 1;
-        margin-top: 6rem;
         margin-bottom: 6rem;
     `
 
@@ -22,7 +22,7 @@ const LandingPage: React.FC = () => {
     return (
         <div className='bg'>
             <Container>
-                <Text> Discover. Explore. Create. </Text>
+                <Text className='mt-[-1rem] md:mt-[6rem]'> Discover. Explore. Create. </Text>
                 <button className='btn text-lg font-semibold' onClick={() => navigate('/discover')}>
                         Dive in
                 </button>

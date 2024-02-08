@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { DataContext } from '../@myTypes/data';
 import { useParams } from "react-router-dom";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { codeSnippets } from "../assets/helper/codeSnippets";
-import styled from "styled-components"
-import ProgressiveImg from "./ProgressiveImg";
 
 const ModelInfo: React.FC = () => {
-    const [isLoading, setIsLoading] = useState(true);
     const { data } = React.useContext(DataContext)!;
     const { modelName } = useParams();
 

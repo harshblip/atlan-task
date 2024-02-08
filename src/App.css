@@ -13,7 +13,7 @@
 }
 
 .blinking-square {
-  width: 35px;
+  width: 14px;
   height: 28px;
   animation: blink 1s linear infinite;
   margin-left: 5px;
@@ -74,6 +74,7 @@
   margin: auto;
   margin-top: 2rem;
   display: flex;
+  align-items: center;
   flex-direction: column;
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import SortButton from './Sort';
 import FilterButton from "./Filter";
 import { StateContext } from "../@myTypes/state";
@@ -11,7 +11,7 @@ const Discover: React.FC = () => {
     return (
         <>
             <div className="container">
-                <div className="flex justify-around">
+                <div className="flex md:-ml-[6rem] md:space-x-28 justify-around">
                     <button
                         className={`custom-button ${activeButton === 'featured' ? 'active' : ''}`}
                         onClick={() => {

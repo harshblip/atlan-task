@@ -1,18 +1,6 @@
-@media screen and (min-width: 40em) {
-    .card {
-        flex: 0 1 calc(50% - 1em);
-    }
-}
-
-@media screen and (min-width: 60em) {
-    .card {
-        flex: 0 1 calc(25% - 1em);
-    }
-}
-
-@media (min-width: 600px) {
+@media (max-width: 600px) {
     .container {
-        width: 60%;
+        width: 100%;
         /* Smaller width on tablets */
     }
 }
@@ -22,4 +10,14 @@
         width: 40%;
         /* Even smaller width on desktops */
     }
+}
+
+@media (max-width: 780px){
+    .blinking-square {
+        width: 44px;
+      }
+
+      .bg {
+        background-image: none;
+      }
 }
