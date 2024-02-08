@@ -37,24 +37,6 @@ const ModelInfo: React.FC = () => {
         };
     }, []); // Empty dependency array ensures this runs only on mount and unmount
 
-
-    const containerStyle = {
-        width: '400px',
-        height: '400px',
-        margin: '20px',
-        overflowY: 'auto' as 'auto',
-        overflowX: 'auto' as 'auto',
-        scrollbarWidth: 'none' as 'none',
-        msOverflowStyle: 'none' as 'none',
-    };
-
-    const Text = styled.text`
-        font-size: medium;
-        color: #415a77;
-        font-weight: bold;
-        margin-top: -0.072rem;
-    `
-
     return (
         <div className="p-4 absolute">
             <p className="text-2xl"> {modelData.modelName} </p>
