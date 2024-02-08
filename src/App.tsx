@@ -12,7 +12,7 @@ const ModelInfo = lazy(() => import('./components/ModelInfo'));
 function App() {
   return (
     <Suspense
-      fallback={<div className='justify-center mt-44'> Hit refresh/shift+R to see an easter egg 😋  </div>}
+      fallback={<div className='flex justify-center mt-44'> Hit refresh/shift+R to see an easter egg 😋  </div>}
     >
       <CacheProvider>
         <StateProvider>

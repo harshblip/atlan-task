@@ -1,25 +1,37 @@
 import React, { useEffect, useState, Suspense } from "react";
-import { DataContext } from '../@myTypes/data';
+import { DataContext, IData } from '../@myTypes/data';
 import { StateContext } from "../@myTypes/state";
 import { filterData, sortData } from "../assets/helper/util";
 import { useNavigate } from "react-router-dom";
 
+interface IDataWithScore extends IData {
+    score: number;
+}
+
 const Card: React.FC = () => {
     const { data } = React.useContext(DataContext)!;
     const [filteredData, setFilteredData] = useState([...data]);
-    const { sort } = React.useContext(StateContext)!;
-    const { filter } = React.useContext(StateContext)!;
+    const { sort, activeButton, filter } = React.useContext(StateContext)!;
     const navigate = useNavigate();
-    console.log(sort, filter);
+    console.log(activeButton);
 
     useEffect(() => {
-        let tempData = [...data];
+        let tempData = data.map((item: IData): IDataWithScore => ({
+            ...item,
+            score: (0.7 * item.likes) + (0.3 * item.usedBy),
+        }));
 
-        tempData = filterData(tempData, filter);
-        tempData = sortData(tempData, sort);
+        if (activeButton === 'featured') {
+            const scoreThreshold = 600; // Set your specific score threshold here
+            tempData = tempData.filter(item => item.score > scoreThreshold);
+        } else {
+            tempData = filterData(tempData, filter);
+            tempData = sortData(tempData, sort);
+        }
 
         setFilteredData(tempData);
-    }, [data, sort, filter]);
+    }, [data, sort, filter, activeButton]);
+
 
     return (
         <Suspense>

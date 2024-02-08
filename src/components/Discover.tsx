@@ -1,14 +1,12 @@
 import React, { useState, Suspense, lazy } from "react";
 import SortButton from './Sort';
 import FilterButton from "./Filter";
+import { StateContext } from "../@myTypes/state";
 
 const LeoComponent = lazy(() => import('./Card'));
 
 const Discover: React.FC = () => {
-    const [activeButton, setActiveButton] = useState(() => {
-        const saved = localStorage.getItem('activeButton');
-        return saved ? JSON.parse(saved) : 'ai'; // Default to 'featured' if nothing is saved
-    });
+    const { activeButton, setActiveButton } = React.useContext(StateContext)!;
 
     return (
         <>
@@ -38,7 +36,7 @@ const Discover: React.FC = () => {
                     <FilterButton />
                 </div>
                 <div className="cards">
-                    <Suspense fallback={<div className='justify-center mt-44'>Hit refresh/shift+R to see an easter egg 😋</div>}>
+                    <Suspense fallback={<div className='flex justify-center mt-44'>Hit refresh/shift+R to see an easter egg 😋</div>}>
                         <LeoComponent />
                     </Suspense>
                 </div>

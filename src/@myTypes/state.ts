@@ -6,6 +6,8 @@ export interface IContext {
     setSort: React.Dispatch<React.SetStateAction<string>>;
     filter: string;
     setFilter: React.Dispatch<React.SetStateAction<string>>;
+    activeButton: string;
+    setActiveButton: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const StateContext = React.createContext<IContext | undefined>(undefined);

@@ -5,12 +5,15 @@ import { StateContext, IContext } from '../@myTypes/state';
 const StateProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
    const [sort, setSort] = useState('Sort by');
    const [filter, setFilter] = useState('Filter by');
+   const [activeButton, setActiveButton] = useState('ai');
 
    const value: IContext = {
       sort,
       setSort,
       filter,
-      setFilter
+      setFilter,
+      activeButton,
+      setActiveButton
    };
 
    return (

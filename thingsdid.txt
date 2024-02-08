@@ -3,3 +3,4 @@
 3. global state management, decreasing the times to re-render (decreasing )
 4. caching data to decrease time to load same data
 5. preloaded fonts beforehand
+6. added ability to function as a progressive web application - to provide seamless user-experience by loading pages beforehand before going offline when user has weak/no connection

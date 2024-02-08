@@ -14,7 +14,7 @@ export interface IData {
     description: string;
     sampleCode: string;
     UseCases: string;
-    usedBy: string,
+    usedBy: number,
     tags: string;
     likes: number;
 }

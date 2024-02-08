@@ -14,32 +14,28 @@ const ModelInfo: React.FC = () => {
 
     console.log(modelName);
 
-    const preloadImages = (srcArray: string[]): void => {
-        const promises = srcArray.map((src) => {
-            return new Promise<void>((resolve, reject) => {
-                const img = new Image();
-                img.src = src;
-                img.onload = () => resolve();
-                img.onerror = () => reject();
-            });
-        });
-
-        Promise.all(promises).then(() => setIsLoading(false)).catch((error) => {
-            console.error('Error preloading images:', error);
-            setIsLoading(false);
-        });
-    };
-
-    const imageUrls = data.flatMap(item => [item.logo, item.blurLogo]);
+    const [modelData, setModelData] = useState(() => {
+        // Try to get model data from localStorage
+        const storedData = localStorage.getItem('modelData');
+        if (storedData) {
+            return JSON.parse(storedData);
+        } else {
+            // Fallback to data from DataContext if not in localStorage
+            return data.find(model => model.modelName === modelName);
+        }
+    });
 
     React.useEffect(() => {
-        preloadImages(imageUrls);
-    }, [imageUrls]);
+        if (modelData) {
+            localStorage.setItem('modelData', JSON.stringify(modelData));
+        }
+        // Return a cleanup function that clears localStorage when the component unmounts
+        return () => {
+            localStorage.removeItem('modelData');
+        };
+    
+    }, [modelData]);
 
-    const modelData = data.find(model => model.modelName === modelName);
-    if (!modelData) {
-        return <div>Model not found.</div>;
-    }
 
     const containerStyle = {
         width: '400px',
@@ -61,10 +57,6 @@ const ModelInfo: React.FC = () => {
     return (
         <div className="about-container no-scrollbar overflow-auto shadow ">
             <div>
-                {/* <ProgressiveImg
-                    src={modelData.logo}
-                    placeholderSrc={modelData.blurLogo}
-                /> */}
                 <div className="flex flex-col p-7">
                     <p className="text-3xl font text-black/90"> {modelData.modelName} </p>
                     <div className="flex space-x-2 mt-2">
