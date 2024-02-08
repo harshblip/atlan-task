@@ -75,14 +75,19 @@ Clean differentiation and accesiblity of parts of website. Professional, on-poin
 
 ## Screenshots
 ### Page Load Times (Google Lighthouse used, in Incognito Browser Mode in Google Chrome v121.0.6)
+
+### Home Page
 ![Screenshot (87)](https://github.com/harshblip/atlan-task/assets/70385803/a801d392-09fa-4bc2-b7e7-73ba5d2acc7e)
-Home Page
 
+### Listing of all AI/LLM Models
 ![Screenshot (88)](https://github.com/harshblip/atlan-task/assets/70385803/4985c85f-69d4-4bba-8961-ff8356cf60ff)
-Listing of all AI/LLM Models
 
+### Dive-in Details of the specific model
 ![Screenshot (89)](https://github.com/harshblip/atlan-task/assets/70385803/556d1e09-755b-455c-9c74-dab7fa50cf71)
-Dive-in Details of the specific model
+
+
+
+
 
 
 
