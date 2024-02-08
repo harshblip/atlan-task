@@ -5,7 +5,7 @@
 
 <div align="center">
  
-  [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://github.com/kothariji/SyntaxMeets) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/kothariji/SyntaxMeets)
+  [![forthebadge](https://forthebadge.com/images/badges/made-with-typescript.svg)](https://github.com/kothariji/SyntaxMeets) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/kothariji/SyntaxMeets)
 
 </div>
 
