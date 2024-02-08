@@ -47,9 +47,9 @@ Implemented caching mechanism through ```localStorage``` to cache api fetched da
 It checks whether the data is cached or not, if it is it directly takes the data from the cached data otherwise calls the api.
 
 ### Optimizing the overall app
-1. For all the page optimisation analysis, I have used Google's Lighthouse tool and Page Speed Insights to analysze the page load time, along with how well it performs as per web standards. I have also used GTMetrix to cross-check the same. On a laptop browser, the time to be interactive is 0.5 seconds for the Homepage.
+1. For all the page optimisation analysis, I have used **Google's Lighthouse** tool and Page Speed Insights to analysze the page load time, along with how well it performs as per web standards. I have also used **GTMetrix** to cross-check the same. On a laptop browser, the time to be interactive is 0.5 seconds for the Homepage.
 
-2. I have made the application into a PWA(Progressive Web App) so that it can be optimized as Google is promoting the use of such Installable apps. This also allows the web app to be used offline as it can be installed.
+2. By integrating Progressive Web App (PWA) capabilities, I've significantly enhanced the user experience, providing offline access, faster load times, and a seamless installation process, all while maintaining the robustness and scalability inherent to modern web applications.
 
 3. The website is made responsive to a great extent even though such an application is not very likely to be used on mobile devices. Absolute sizing is not used as much as possible and in turn, sizing units like **em**, **rem**, **vh**, and **vw** are used. Media queries have been used at most places, except a few where Tailwind had to be used for rapid development.
 
@@ -64,7 +64,9 @@ Filtering based on whether the model is made by a person or an organization.
 
 Sorting based on the count of likes and accuracy of that model.
 
-All of this globally managed through context api.
+Despite the challenges posed by TypeScript's strict typing system, which can be daunting compared to JavaScript's more lenient approach, I've harnessed its power to craft a production-ready application. 
+
+By utilizing the Context API, I've managed to create a state management solution that is both efficient and reliable, showcasing TypeScript's ability to provide strong typing and advanced features that elevate the development process and ensure code quality at scale.
 
 ### Intuitive clean UI
 Made an intuitive clean ui to both for mobile devices as well as desktop screens to serve users as a delight.
