@@ -41,6 +41,8 @@
   height: 80vh;
   /* using avif format compressed images to increase lcp and fcp */
   background-image: url('/src/assets/images/home-header-modern.avif');
+  background-position-x: center;
+  background-position-y: 35%;
   background-repeat: no-repeat;
   background-size: cover;
 }
